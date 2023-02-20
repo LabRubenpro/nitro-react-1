@@ -1,27 +1,65 @@
 .nitro-loading {
     position: relative;
-    background: $primary;
-    z-index: 100;
+    background: #09161f;
 
-    .connecting-duck {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        right: 0;
-        left: 0;
-        background: url('@/assets/images/loading/connecting-duck-spritesheet.png') no-repeat top left;
-        width: 235px;
-        height: 127px;
-        animation: 1.5s connecting-duck infinite step-end;
-        transform: scale(0.5);
+    .percent {
+        font-size: 17px;
+        color: #999999;
     }
 
-    .nitro-logo {
-        width: 47px;
-        height: 65px;
-        background: transparent url('https://assets.nitrodev.co/logos/react-loader.png') no-repeat center;
-        z-index: 1;
+    .loading-stories {
+        background-image: url(@/assets/images/loadingscreen/background.png);
+        width: 500px;
+        height: 434px;
+        position: relative;
+        -webkit-filter: drop-shadow(1px 3px 20px #36445D);
+
+        .loadingPhoto {
+            width: 320px;
+            height: 320px;
+            top: 51px;
+            left: 94px;
+
+            @for $i from 1 through 30 {
+                &[data-image="#{$i}"] {
+                    background-image: url(@/assets/images/loadingscreen/image-#{$i}.png);
+                }
+            }
+        }
+
+        .imageOverlay {
+            background-image: url(@/assets/images/loadingscreen/overlay.png);
+            width: 500px;
+            height: 434px;
+        }
+    }
+
+    .nitro-loading-bar {
+        border: 1px solid white;
+        padding: 3px;
+        height: 25px;
+        width: 400px;
+        border-radius: 3px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            margin: 3px;
+            border-radius: 4px;
+            background: #000;
+            z-index: 0;
+        }
+
+        .nitro-loading-bar-inner {
+            height: 100%;
+            z-index: 4;
+            transition: all 1s;
+            background: linear-gradient(#bfd1d9 50%, #93acb7 50%);
+        }
     }
 }
 
